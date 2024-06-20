@@ -1,0 +1,72 @@
+﻿<UserControl  x:Class="Dashboard_AB_System.View.About_Us"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:Dashboard_AB_System.ViewModel"
+             xmlns:view="clr-namespace:Dashboard_AB_System.View"
+             xmlns:Menu="clr-namespace:Dashboard_AB_System.Utilities"
+             xmlns:local="clr-namespace:Dashboard_AB_System"
+             mc:Ignorable="d"
+             d:DesignHeight="600"
+             d:DesignWidth="900"
+             Style="{StaticResource Page_Style}">
+    
+    <UserControl.DataContext>
+        <vm:NavigationVM />
+    </UserControl.DataContext>
+
+    <Grid Margin="0,0,0,0">
+        <Border CornerRadius="0,0,20,20" Background="White" />
+        <Grid Margin="0,20,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="147*" />
+                <ColumnDefinition Width="475*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Rectangle background -->
+            <Rectangle Fill="#F1E5D1" Grid.ColumnSpan="2" Margin="100,10,100,238" RadiusX="10" RadiusY="10" />
+
+            <!-- Profile image and Name -->
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="25,0,10,0" Grid.ColumnSpan="2">
+                <Grid Width="180" Height="180" Margin="10">
+                    <Grid.Clip>
+                        <EllipseGeometry Center="90,90" RadiusX="90" RadiusY="90" />
+                    </Grid.Clip>
+                    <Image x:Name="ProfileImage" Stretch="UniformToFill" Style="{StaticResource ProfileImageStyle}" />
+                </Grid>
+
+                <!-- Display First Name and Last Name on the same line -->
+                <TextBlock FontSize="18" FontWeight="Bold" HorizontalAlignment="Center">
+                    <Run Text="{Binding FirstName}" />
+                    <Run Text=" " />
+                    <Run Text="{Binding LastName}" />
+                </TextBlock>
+            </StackPanel>
+
+            <!-- Buttons with Rounded Corners -->
+            <Button x:Name="Personal_Details" Content="Personal Details" 
+                    HorizontalAlignment="Left" Margin="100,237,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="350" 
+                    Height="67" Style="{StaticResource RoundedButtonStyle}"
+                    Command="{Binding ShowPersonalDetailsCommand}"/>
+
+            <Button x:Name="Works" Grid.Column="1" Content="Works" HorizontalAlignment="Left" Margin="237,237,0,0" VerticalAlignment="Top" Width="350" Height="67"
+                    Style="{StaticResource RoundedButtonStyle}"
+                    Command="{Binding ShowWorksCommand}"/>
+        </Grid>
+
+        <!-- Change Profile Picture Button -->
+        <Grid>
+            <Button Width="90" Height="90" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="461,143,0,0" Style="{StaticResource ProfileChangeButtonStyle}" />
+        </Grid>
+
+        <!-- Canvas for Popup -->
+        <Canvas>
+            <!-- Personal Details Popup -->
+            <view:Personal_Details_PopUp x:Name="PersonalDetailsPopupControl" Visibility="{Binding IsPersonalDetailsPopupVisible, Converter={StaticResource BooleanToVisibilityConverter}}" Width="800" Height="250" Canvas.Left="50" Canvas.Top="300"/>
+
+            <!-- Works Popup -->
+            <view:WorksPopUp x:Name="WorksPopupControl" Visibility="{Binding IsWorksPopupVisible, Converter={StaticResource BooleanToVisibilityConverter}}" Width="800" Height="250" Canvas.Left="50" Canvas.Top="300"/>
+        </Canvas>
+    </Grid>
+</UserControl>

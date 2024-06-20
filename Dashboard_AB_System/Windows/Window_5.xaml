@@ -1,0 +1,22 @@
+﻿<Window x:Class="Dashboard_AB_System.Windows.Window_5"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dashboard_AB_System.Windows"
+        mc:Ignorable="d"
+        Title="Window_5" WindowStartupLocation="CenterScreen" 
+        Height="700"
+        Width="900">
+    <Grid>
+        <Grid>
+            <Button  Style="{StaticResource Back_Main}"
+             x:Name="Back_2_DashBoard" Content="" HorizontalAlignment="Left" 
+             Margin="10,10,0,0" 
+             Width="51"
+             BorderBrush="White" 
+             Click="Back_2_DashBoard_Click" Background="#FFFEFCFC" Height="45"/>
+
+        </Grid>
+    </Grid>
+</Window>

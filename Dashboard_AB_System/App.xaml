@@ -1,0 +1,24 @@
+﻿<Application x:Class="Dashboard_AB_System.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Dashboard_AB_System"
+             xmlns:c="clr-namespace:Dashboard_AB_System.Converters" 
+              StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Page.xaml" />
+                <ResourceDictionary Source="Styles/Image.xaml" />
+                <ResourceDictionary Source="Styles/Text.xaml" />
+                <ResourceDictionary Source="Styles/Button.xaml" />
+                <ResourceDictionary Source="Utilities/DataTemplate.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <c:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <c:StringIsEmptyToVisibilityConverter x:Key="StringIsEmptyToVisibilityConverter" />
+            
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

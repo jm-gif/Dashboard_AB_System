@@ -1,0 +1,264 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Dashboard_AB_System">
+    <Style x:Key="BtnStyle" TargetType="RadioButton">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0,5,0,0" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <StackPanel>
+                        <Border x:Name="border"
+                        Height="50"
+                        Width="228"
+                        BorderThickness="0">
+                            <!-- Changed BorderThickness to 0 -->
+                            <!-- Removed the long line underneath the button -->
+                            <Border.Background>
+                                <SolidColorBrush x:Name="BorderBackground"
+                                         Color="Transparent" />
+                            </Border.Background>
+
+                            <Grid>
+                                <ContentPresenter />
+                            </Grid>
+                        </Border>
+
+                        <Border x:Name="Indicator"
+                        Height="4"
+                        Width="228"
+                        HorizontalAlignment="Center"
+                        Background="#212529"
+                        Visibility="Collapsed" />
+                    </StackPanel>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="Transparent" />
+                            <Setter Property="Visibility" TargetName="Indicator" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter Property="Visibility" TargetName="Indicator" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+
+    <ImageBrush x:Key="close_app_def"
+            ImageSource="/Images/x-button.png"
+            Stretch="None" />
+
+    <ImageBrush x:Key="close_app_mo"
+            ImageSource="/Images/letter-x.png"
+            Stretch="None" />
+
+    <Style x:Key="ExitApp"
+       TargetType="{x:Type Button}">
+
+        <Setter Property="Height"
+            Value="40" />
+        <Setter Property="Width"
+            Value="40" />
+        <Setter Property="HorizontalAlignment"
+            Value="Right" />
+        <Setter Property="VerticalAlignment"
+            Value="Top" />
+        <Setter Property="Margin"
+            Value="0,15,15,0" />
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="{x:Type Button}">
+
+                    <Border x:Name="border"
+                        BorderThickness="0"
+                        Background="{StaticResource close_app_def}">
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver"
+                             Value="True">
+
+                            <Setter Property="Background"
+                                TargetName="border"
+                                Value="{StaticResource close_app_mo}" />
+
+                        </Trigger>
+
+                        <Trigger Property="IsPressed"
+                             Value="True">
+
+                            <Setter Property="Background"
+                                TargetName="border"
+                                Value="{StaticResource close_app_mo}" />
+
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
+
+    </Style>
+    
+    <ImageBrush x:Key="black_Arrow"
+           ImageSource="/Images/black_a.png"
+           Stretch="None" />
+
+    <ImageBrush x:Key="blue_Arrow"
+           ImageSource="/Images/blue_a.png"
+           Stretch="None" />
+
+    <Style x:Key="Back_Main"
+      TargetType="{x:Type Button}">
+
+        <Setter Property="Height"
+           Value="40" />
+        <Setter Property="Width"
+           Value="40" />
+        <Setter Property="HorizontalAlignment"
+           Value="Right" />
+        <Setter Property="VerticalAlignment"
+           Value="Top" />
+        <Setter Property="Margin"
+           Value="0,15,15,0" />
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="{x:Type Button}">
+
+                    <Border x:Name="border"
+                       BorderThickness="0"
+                       Background="{StaticResource black_Arrow}">
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver"
+                            Value="True">
+
+                            <Setter Property="Background"
+                               TargetName="border"
+                               Value="{StaticResource blue_Arrow}" />
+
+                        </Trigger>
+
+                        <Trigger Property="IsPressed"
+                            Value="True">
+
+                            <Setter Property="Background"
+                               TargetName="border"
+                               Value="{StaticResource blue_Arrow}" />
+
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+            </Setter.Value> 
+
+        </Setter>
+        
+
+    </Style>
+
+    <!-- Image Style for Profile Picture -->
+    <Style x:Key="ProfileImageStyle" TargetType="Image">
+        <Setter Property="local:ImageHelper.BackgroundImage" Value="/Images/User_Page.png" />
+    </Style>
+
+
+
+   <!-- Custom Button Style to prevent highlighting -->
+    <Style x:Key="ProfileChangeButtonStyle" TargetType="Button">
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/Images/Change.png"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="FocusVisualStyle">
+            <Setter.Value>
+                <Style>
+                    <Setter Property="Control.Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <ContentPresenter/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!-- Remove triggers to keep background unchanged on hover and press -->
+    </Style>
+
+    
+    
+    <!-- Button Corner Radius-->
+    <Style x:Key="RoundedButtonStyle" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="0,0,10,10">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="#F1E5D1"/>
+    </Style>
+    
+    <Style x:Key="roundedButtonStyle" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                         BorderBrush="{TemplateBinding BorderBrush}"
+                         BorderThickness="1"
+                         CornerRadius="0,0,10,0">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="#F1E5D1"/>
+    </Style>
+
+
+
+</ResourceDictionary>
